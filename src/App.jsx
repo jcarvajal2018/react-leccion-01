@@ -9,7 +9,7 @@ const users = [
         isFollowing: true
     },
     {
-        userName: 'pheralb',
+        userName: 'pheralbd',
         name: 'Pablo H.',
         isFollowing: false
     },
@@ -29,16 +29,15 @@ export function App(){
     return(
          <section className="App">  
          {
-         users.map(user => {
-            const {userName, name, isFollowing} = user
-            return (
-                <TwitterFollowCard  
-                 userName={userName}
-                 initialisFollowing={isFollowing}>
-                {name}
-                </TwitterFollowCard>        
-                )
-            })
+         users.map(({userName, name, isFollowing}) => (
+            <TwitterFollowCard  
+             key={userName}  //key=index solo si se tiene claro que siempre va a hacer el mismo, mala praxis
+             userName={userName}
+             initialisFollowing={isFollowing}>
+            {name}
+            </TwitterFollowCard>        
+            )
+            )
         }
         </section>
     )
